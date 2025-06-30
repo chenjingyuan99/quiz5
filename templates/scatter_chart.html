@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scatter Chart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Jingyuan Chen 9629 - quiz 5</h1>
+        <h1>Scatter Chart - Interactive Data Entry</h1>
+        <a href="/">← Back to Dashboard</a>
+        
+        <!-- Data Entry Form -->
+        <div class="data-entry-section">
+            <h2>Enter Data Points (up to 10 points)</h2>
+            <form method="POST" id="scatterForm">
+                <div class="form-instructions">
+                    <p><strong>Instructions:</strong></p>
+                    <ul>
+                        <li>X and Y coordinates must be integers from 0 to 50</li>
+                        <li>C (Color) must be 1 (Green), 2 (Black), or 3 (Red)</li>
+                        <li>Leave fields empty if you want fewer than 10 points</li>
+                    </ul>
+                </div>
+                
+                <div class="data-points-grid">
+                    <div class="grid-header">
+                        <span>Point</span>
+                        <span>X (0-50)</span>
+                        <span>Y (0-50)</span>
+                        <span>C (1,2,3)</span>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>1:</span>
+                        <input type="number" name="x1" min="0" max="50" placeholder="X">
+                        <input type="number" name="y1" min="0" max="50" placeholder="Y">
+                        <select name="c1">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>2:</span>
+                        <input type="number" name="x2" min="0" max="50" placeholder="X">
+                        <input type="number" name="y2" min="0" max="50" placeholder="Y">
+                        <select name="c2">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>3:</span>
+                        <input type="number" name="x3" min="0" max="50" placeholder="X">
+                        <input type="number" name="y3" min="0" max="50" placeholder="Y">
+                        <select name="c3">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>4:</span>
+                        <input type="number" name="x4" min="0" max="50" placeholder="X">
+                        <input type="number" name="y4" min="0" max="50" placeholder="Y">
+                        <select name="c4">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>5:</span>
+                        <input type="number" name="x5" min="0" max="50" placeholder="X">
+                        <input type="number" name="y5" min="0" max="50" placeholder="Y">
+                        <select name="c5">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>6:</span>
+                        <input type="number" name="x6" min="0" max="50" placeholder="X">
+                        <input type="number" name="y6" min="0" max="50" placeholder="Y">
+                        <select name="c6">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>7:</span>
+                        <input type="number" name="x7" min="0" max="50" placeholder="X">
+                        <input type="number" name="y7" min="0" max="50" placeholder="Y">
+                        <select name="c7">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>8:</span>
+                        <input type="number" name="x8" min="0" max="50" placeholder="X">
+                        <input type="number" name="y8" min="0" max="50" placeholder="Y">
+                        <select name="c8">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>9:</span>
+                        <input type="number" name="x9" min="0" max="50" placeholder="X">
+                        <input type="number" name="y9" min="0" max="50" placeholder="Y">
+                        <select name="c9">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="data-point">
+                        <span>10:</span>
+                        <input type="number" name="x10" min="0" max="50" placeholder="X">
+                        <input type="number" name="y10" min="0" max="50" placeholder="Y">
+                        <select name="c10">
+                            <option value="">Color</option>
+                            <option value="1">1 (Green)</option>
+                            <option value="2">2 (Black)</option>
+                            <option value="3">3 (Red)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit">Generate Scatter Plot</button>
+                    <button type="button" onclick="clearForm()">Clear All</button>
+                    <button type="button" onclick="loadSampleData()">Load Sample Data</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Chart Display -->
+        <div class="chart-container">
+            <canvas id="scatterChart"></canvas>
+        </div>
+        
+        <div class="legend">
+            <h3>Color Legend:</h3>
+            <p><span style="color: green; font-size: 20px;">●</span> Green (C=1)</p>
+            <p><span style="color: black; font-size: 20px;">●</span> Black (C=2)</p>
+            <p><span style="color: red; font-size: 20px;">●</span> Red (C=3)</p>
+        </div>
+        
+        <!-- Current Data Display -->
+        <div class="current-data">
+            <h3>Current Data Points:</h3>
+            <div id="dataDisplay"></div>
+        </div>
+    </div>
+    <script>
+        let data = {{ data | safe }};
+        const ctx = document.getElementById('scatterChart').getContext('2d');
+        let chart; // Declare chart variable globally
+        
+        // Function to create/update chart
+        function createChart(chartData) {
+            // Group data by color
+            const colorMap = {1: 'green', 2: 'black', 3: 'red'};
+            const datasets = [];
+            
+            [1, 2, 3].forEach(colorCode => {
+                const filteredData = chartData.filter(item => item.c === colorCode);
+                if (filteredData.length > 0) {
+                    datasets.push({
+                        label: `Color ${colorCode} (${colorMap[colorCode]})`,
+                        data: filteredData.map(item => ({x: item.x, y: item.y})),
+                        backgroundColor: colorMap[colorCode],
+                        borderColor: colorMap[colorCode],
+                        pointRadius: 8,
+                        pointHoverRadius: 10
+                    });
+                }
+            });
+            
+            // Destroy existing chart if it exists
+            if (chart) {
+                chart.destroy();
+            }
+            
+            // Create new chart
+            chart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: 0,
+                            max: 50,
+                            title: {
+                                display: true,
+                                text: 'X Axis',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: '#e0e0e0'
+                            },
+                            ticks: {
+                                stepSize: 5,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        y: {
+                            min: 0,
+                            max: 50,
+                            title: {
+                                display: true,
+                                text: 'Y Axis',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: '#e0e0e0'
+                            },
+                            ticks: {
+                                stepSize: 5,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `(${context.parsed.x}, ${context.parsed.y})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Function to get current form data and update chart
+        function updateChartFromForm() {
+            const formData = [];
+            
+            // Get data from form
+            for (let i = 1; i <= 10; i++) {
+                const x = document.querySelector(`input[name="x${i}"]`).value;
+                const y = document.querySelector(`input[name="y${i}"]`).value;
+                const c = document.querySelector(`select[name="c${i}"]`).value;
+                
+                if (x && y && c) {
+                    formData.push({
+                        x: parseInt(x),
+                        y: parseInt(y),
+                        c: parseInt(c)
+                    });
+                }
+            }
+            
+            // Update global data and recreate chart
+            data = formData;
+            createChart(data);
+            displayCurrentData();
+        }
+        
+        // Add event listener to form submission
+        // document.getElementById('scatterForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     updateChartFromForm();
+        // });
+        document.getElementById('scatterForm').addEventListener('submit', function(e) {
+            let valid = true;
+            let msg = '';
+            for (let i = 1; i <= 10; i++) {
+                const x = document.querySelector(`input[name="x${i}"]`).value;
+                const y = document.querySelector(`input[name="y${i}"]`).value;
+                const c = document.querySelector(`select[name="c${i}"]`).value;
+                // If any of x or y is filled, color must be selected
+                if ((x !== '' || y !== '') && c === '') {
+                    valid = false;
+                    msg = `Color is required for point ${i} if X or Y is filled.`;
+                    break;
+                }
+                // If color is selected, both x and y must be filled
+                if (c !== '' && (x === '' || y === '')) {
+                    valid = false;
+                    msg = `Both X and Y are required for point ${i} if color is selected.`;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert(msg);
+                e.preventDefault();
+            }
+        });
+
+        // Display current data points
+        function displayCurrentData() {
+            const dataDisplay = document.getElementById('dataDisplay');
+            if (data.length === 0) {
+                dataDisplay.innerHTML = '<p>No data points entered.</p>';
+                return;
+            }
+            
+            const colorMap = {1: 'green', 2: 'black', 3: 'red'};
+            let html = '<table><tr><th>Point</th><th>X</th><th>Y</th><th>Color</th></tr>';
+            data.forEach((point, index) => {
+                const colorName = colorMap[point.c];
+                html += `<tr>
+                    <td>${index + 1}</td>
+                    <td>${point.x}</td>
+                    <td>${point.y}</td>
+                    <td style="color: ${colorName};">●${colorName} (${point.c})</td>
+                </tr>`;
+            });
+            html += '</table>';
+            dataDisplay.innerHTML = html;
+        }
+        
+        // Clear form function
+        function clearForm() {
+            document.getElementById('scatterForm').reset();
+            data = [];
+            createChart(data);
+            displayCurrentData();
+        }
+        
+        // Load sample data function
+        function loadSampleData() {
+            const samplePoints = [
+                {x: 10, y: 20, c: 1},
+                {x: 25, y: 35, c: 2},
+                {x: 40, y: 15, c: 3},
+                {x: 15, y: 45, c: 1},
+                {x: 35, y: 25, c: 2}
+            ];
+
+            // Only fill the form, do NOT submit or update the chart
+            samplePoints.forEach((point, index) => {
+                const pointNum = index + 1;
+                document.querySelector(`input[name="x${pointNum}"]`).value = point.x;
+                document.querySelector(`input[name="y${pointNum}"]`).value = point.y;
+                document.querySelector(`select[name="c${pointNum}"]`).value = point.c;
+            });
+            // Clear remaining fields
+            for (let i = samplePoints.length + 1; i <= 10; i++) {
+                document.querySelector(`input[name="x${i}"]`).value = '';
+                document.querySelector(`input[name="y${i}"]`).value = '';
+                document.querySelector(`select[name="c${i}"]`).value = '';
+            }
+        }
+
+        // function loadSampleData() {
+        //     const samplePoints = [
+        //         {x: 10, y: 20, c: 1},
+        //         {x: 25, y: 35, c: 2},
+        //         {x: 40, y: 15, c: 3},
+        //         {x: 15, y: 45, c: 1},
+        //         {x: 35, y: 25, c: 2}
+        //     ];
+            
+        //     // Clear form first
+        //     document.getElementById('scatterForm').reset();
+            
+        //     // Load sample data into form
+        //     samplePoints.forEach((point, index) => {
+        //         const pointNum = index + 1;
+        //         document.querySelector(`input[name="x${pointNum}"]`).value = point.x;
+        //         document.querySelector(`input[name="y${pointNum}"]`).value = point.y;
+        //         document.querySelector(`select[name="c${pointNum}"]`).value = point.c;
+        //     });
+            
+        //     // Update chart with sample data
+        //     data = samplePoints;
+        //     createChart(data);
+        //     displayCurrentData();
+        // }
+        
+        // Initialize chart and data display
+        createChart(data);
+        displayCurrentData();
+    </script>
+
+    <!-- <script>
+        const data = {{ data | safe }};
+        const ctx = document.getElementById('scatterChart').getContext('2d');
+        
+        // Group data by color
+        const colorMap = {1: 'green', 2: 'black', 3: 'red'};
+        const datasets = [];
+        
+        [1, 2, 3].forEach(colorCode => {
+            const filteredData = data.filter(item => item.c === colorCode);
+            if (filteredData.length > 0) {
+                datasets.push({
+                    label: `Color ${colorCode} (${colorMap[colorCode]})`,
+                    data: filteredData.map(item => ({x: item.x, y: item.y})),
+                    backgroundColor: colorMap[colorCode],
+                    borderColor: colorMap[colorCode],
+                    pointRadius: 8,
+                    pointHoverRadius: 10
+                });
+            }
+        });
+        
+        const chart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        min: 0,
+                        max: 50,
+                        title: {
+                            display: true,
+                            text: 'X Axis',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: '#e0e0e0'
+                        },
+                        ticks: {
+                            stepSize: 5,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    y: {
+                        min: 0,
+                        max: 50,
+                        title: {
+                            display: true,
+                            text: 'Y Axis',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: '#e0e0e0'
+                        },
+                        ticks: {
+                            stepSize: 5,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `(${context.parsed.x}, ${context.parsed.y})`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Display current data points
+        function displayCurrentData() {
+            const dataDisplay = document.getElementById('dataDisplay');
+            if (data.length === 0) {
+                dataDisplay.innerHTML = '<p>No data points entered.</p>';
+                return;
+            }
+            
+            let html = '<table><tr><th>Point</th><th>X</th><th>Y</th><th>Color</th></tr>';
+            data.forEach((point, index) => {
+                const colorName = colorMap[point.c];
+                html += `<tr>
+                    <td>${index + 1}</td>
+                    <td>${point.x}</td>
+                    <td>${point.y}</td>
+                    <td style="color: ${colorName};">●${colorName} (${point.c})</td>
+                </tr>`;
+            });
+            html += '</table>';
+            dataDisplay.innerHTML = html;
+        }
+        
+        // Clear form function
+        function clearForm() {
+            document.getElementById('scatterForm').reset();
+        }
+        
+        // Load sample data function
+        function loadSampleData() {
+            const samplePoints = [
+                {x: 10, y: 20, c: 1},
+                {x: 25, y: 35, c: 2},
+                {x: 40, y: 15, c: 3},
+                {x: 15, y: 45, c: 1},
+                {x: 35, y: 25, c: 2}
+            ];
+            
+            samplePoints.forEach((point, index) => {
+                const pointNum = index + 1;
+                document.querySelector(`input[name="x${pointNum}"]`).value = point.x;
+                document.querySelector(`input[name="y${pointNum}"]`).value = point.y;
+                document.querySelector(`select[name="c${pointNum}"]`).value = point.c;
+            });
+        }
+        
+        // Initialize data display
+        displayCurrentData();
+    </script> -->
+</body>
+</html>
+
+

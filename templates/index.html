@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Jingyuan Chen 9629 - quiz 5</h1>
+        <h1>Chart Dashboard</h1>
+        
+        <div class="chart-links">
+            <h2>Available Charts</h2>
+            
+            <div class="chart-option">
+                <h3>Pie Chart</h3>
+                <p>Filter by amount range:</p>
+                <form action="/pie_chart" method="get">
+                    <input type="number" name="min" value="5" placeholder="Min amount">
+                    <input type="number" name="max" value="20" placeholder="Max amount">
+                    <button type="submit">View Pie Chart</button>
+                </form>
+            </div>
+            
+            <div class="chart-option">
+                <h3>Bar Chart</h3>
+                <p>Filter by amount range:</p>
+                <form action="/bar_chart" method="get">
+                    <input type="number" name="min" value="5" placeholder="Min amount">
+                    <input type="number" name="max" value="20" placeholder="Max amount">
+                    <button type="submit">View Bar Chart</button>
+                </form>
+            </div>
+            
+            <div class="chart-option">
+                <h3>Scatter Chart</h3>
+                <p>Interactive data entry for up to 10 points:</p>
+                <a href="/scatter_chart">
+                    <button>Create Scatter Chart</button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="data-table">
+            <h2>Food Data</h2>
+            <table>
+                <tr>
+                    <th>Amount</th>
+                    <th>Food</th>
+                    <th>Category</th>
+                </tr>
+                <tr><td>10</td><td>Apples</td><td>F</td></tr>
+                <tr><td>2</td><td>Bananas</td><td>F</td></tr>
+                <tr><td>40</td><td>Cherries</td><td>F</td></tr>
+                <tr><td>1</td><td>Daikon</td><td>V</td></tr>
+                <tr><td>10</td><td>Fig</td><td>F</td></tr>
+                <tr><td>30</td><td>Grapes</td><td>F</td></tr>
+                <tr><td>5</td><td>Peach</td><td>F</td></tr>
+                <tr><td>12</td><td>Celery</td><td>V</td></tr>
+                <tr><td>1</td><td>Watermelon</td><td>F</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

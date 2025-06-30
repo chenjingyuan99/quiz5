@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bar Chart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Jingyuan Chen 9629 - quiz 5</h1>
+        <h1>Horizontal Bar Chart (Amount Range: {{ min_amount }} - {{ max_amount }})</h1>
+        <a href="/">← Back to Dashboard</a>
+        
+        <div class="chart-container">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const data = {{ data | safe }};
+        const ctx = document.getElementById('barChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(item => item.food),
+                datasets: [{
+                    label: 'Amount',
+                    data: data.map(item => item.amount),
+                    backgroundColor: '#36A2EB',
+                    borderColor: '#36A2EB',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            generateLabels: function(chart) {
+                                const original = Chart.defaults.plugins.legend.labels.generateLabels;
+                                const labels = original.call(this, chart);
+                                
+                                // Add data values to legend labels
+                                labels.forEach((label, index) => {
+                                    const dataset = chart.data.datasets[0];
+                                    const values = dataset.data.map((value, i) => 
+                                        `${chart.data.labels[i]}: ${value}`
+                                    ).join(' | ');
+                                    label.text = `${label.text} (${values})`;
+                                });
+                                
+                                return labels;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: true,
+                        anchor: 'end',
+                        align: 'right',
+                        color: '#333',
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: (value, context) => {
+                            // Display classification instead of value
+                            return data[context.dataIndex].category;
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 50  // Add padding to the right side
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: Math.max(...data.map(item => item.amount)) + 2, // Add 20% padding
+                        grid: {
+                            display: true
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                animation: {
+                    onComplete: function() {
+                        // Draw classification labels on bars
+                        const ctx = this.chart.ctx;
+                        const chart = this.chart;
+                        
+                        chart.data.datasets.forEach((dataset, datasetIndex) => {
+                            const meta = chart.getDatasetMeta(datasetIndex);
+                            meta.data.forEach((bar, index) => {
+                                const classification = data[index].category;
+                                
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 12px Arial';
+                                ctx.textAlign = 'left';
+                                ctx.fillText(classification, bar.x + 5, bar.y + 4);
+                            });
+                        });
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2, h3 {
+    color: #555;
+}
+
+.chart-links {
+    margin-bottom: 30px;
+}
+
+.chart-option {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.chart-option form {
+    margin-top: 10px;
+}
+
+.chart-option input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.chart-container {
+    width: 85%;
+    height: 500px;
+    margin: 30px auto;
+    position: relative;
+}
+
+.data-table {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.legend {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.legend p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.instructions {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e8f4f8;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+}
+
+.instructions h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.instructions ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin: 8px 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* ... (keep existing styles) ... */
+
+/* Scatter Chart Form Styles */
+.data-entry-section {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-instructions {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e7f3ff;
+    border-radius: 5px;
+    border-left: 4px solid #007bff;
+}
+
+.form-instructions ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.form-instructions li {
+    margin: 5px 0;
+}
+
+.data-points-grid {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.grid-header {
+    display: contents;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+.grid-header span {
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.data-point {
+    display: contents;
+}
+
+.data-point span {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+.data-point input,
+.data-point select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.data-point input:focus,
+.data-point select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    margin: 0 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+}
+
+.form-buttons button[type="button"] {
+    background-color: #6c757d;
+}
+
+.form-buttons button[type="button"]:hover {
+    background-color: #545b62;
+}
+
+.current-data {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.current-data table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.current-data th {
+    background-color: #e9ecef;
+}
+
+.legend {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.legend p {
+    margin: 8px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.legend span {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .data-points-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .grid-header {
+        display: none;
+    }
+    
+    .data-point {
+        display: grid;
+        grid-template-columns: 60px 1fr 1fr 1fr;
+        gap: 10px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+}
